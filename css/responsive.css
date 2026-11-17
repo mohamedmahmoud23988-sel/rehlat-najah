@@ -1,0 +1,18 @@
+/* تظبيطات الشاشات الصغيرة (لازم يكون آخر ملف) */
+
+@media (max-width: 460px) {
+  .ip-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 460px) {
+  .brand h1 { font-size: 1.1rem; }
+  .brand-icon { font-size: 1.3rem; }
+  .greet-name { max-width: 110px; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 400px) {
+  .stat-num { font-size: 1.4rem; }
+  .stage-name-big { font-size: 1.5rem; }
+}
+

@@ -1,0 +1,84 @@
+/* الداشبورد التفصيلية */
+
+#fullDashPage { max-width: 1000px; margin-inline: auto; }
+.fd-top { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; margin-top: 14px; text-align: start; }
+.fd-tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.fd-tiles .dc-tile { text-align: center; }
+.fd-pace { margin-top: 12px; font-weight: 700; color: #9a5b00; background: #fdf2e0; border-radius: 10px; padding: 8px 12px; }
+.fd-pace.good { color: #1e7a46; background: #e3f6ea; }
+
+.fd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.fd-grid .ip-card { margin-top: 14px; }
+
+/* توازن الجوانب */
+.fd-bal { display: grid; grid-template-columns: 100px 1fr 46px; align-items: center; gap: 10px; padding: 7px 0; font-size: .9rem; }
+.fd-bal-name { font-weight: 700; white-space: nowrap; }
+.fd-bal-track { height: 14px; background: var(--bg); border-radius: 99px; overflow: hidden; }
+.fd-bal-track span { display: block; height: 100%; border-radius: 99px; min-width: 2px; transition: width .6s; }
+.fd-bal-val { font-weight: 800; text-align: end; }
+
+/* محتاج اهتمام */
+.fd-att { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--bg); text-decoration: none; color: inherit; font-size: .9rem; }
+.fd-att:last-child { border-bottom: none; }
+a.fd-att:hover { background: var(--bg); border-radius: 8px; }
+.fd-att-i { font-size: 1.3rem; width: 30px; text-align: center; }
+.fd-att-t { flex: 1; font-weight: 700; }
+.fd-att-t small { display: block; font-size: .72rem; color: var(--muted); font-weight: 600; }
+.fd-late { color: #c0392b; font-weight: 800; }
+
+/* الرسم اليومي */
+.fd-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.fd-chips { display: flex; gap: 8px; }
+.fd-chips span { background: var(--bg); border-radius: 99px; padding: 3px 12px; font-size: .82rem; color: var(--muted); }
+.fd-chips b { color: var(--text); }
+.fd-chart .grid text { fill: var(--muted); font-size: 11px; font-family: inherit; }
+.fd-chart .axis-d { fill: var(--muted); font-size: 11px; font-family: inherit; }
+
+/* خريطة الأيام */
+.fd-week, .fd-heat { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; max-width: 640px; margin-inline: auto; }
+.fd-week { margin-bottom: 5px; }
+.fd-week span { text-align: center; font-size: .72rem; color: var(--muted); font-weight: 700; }
+.fd-cell {
+  display: grid; place-items: center;
+  height: 38px; min-width: 0;
+  border-radius: 8px;
+  font-size: .78rem; font-weight: 700;
+  background: var(--bg); color: var(--muted);
+}
+.fd-cell.empty { background: transparent; }
+/* سلم لون واحد (أخضر) من الفاتح للغامق */
+.fd-cell.l0 { background: #f4ede6; color: #9a5b00; }
+.fd-cell.l1 { background: #d6ecdf; color: #1e5e3a; }
+.fd-cell.l2 { background: #9fd3b3; color: #134a2c; }
+.fd-cell.l3 { background: #4fa977; color: #fff; }
+.fd-cell.l4 { background: #1e7a46; color: #fff; }
+.fd-cell.lna { background: #fafafa; border: 1px dashed var(--border); }
+.fd-cell.lf { background: #fff; border: 1px solid var(--border); color: #c5c5c5; }
+.fd-cell.today { outline: 3px solid var(--gold); outline-offset: 1px; }
+.fd-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 12px; font-size: .78rem; color: var(--muted); }
+.fd-legend .fd-cell { width: 18px; height: 18px; display: inline-block; border-radius: 4px; }
+
+/* الأرقام */
+.fd-nums { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.fd-num { background: var(--bg); border-radius: 12px; padding: 12px; display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: center; }
+.fd-num span { font-size: 1.6rem; grid-row: span 2; }
+.fd-num b { font-size: 1.2rem; }
+.fd-num small { font-size: .75rem; color: var(--muted); font-weight: 600; }
+
+/* تفاصيل الجوانب */
+.fd-asp { border-top: 4px solid var(--c); }
+.fd-table { width: 100%; border-collapse: collapse; font-size: .88rem; margin-top: 4px; }
+.fd-table th { text-align: start; color: var(--muted); font-size: .75rem; font-weight: 700; padding: 6px 4px; border-bottom: 1px solid var(--border); }
+.fd-table td { padding: 8px 4px; border-bottom: 1px solid var(--bg); }
+.fd-table a { color: var(--text); font-weight: 700; text-decoration: none; }
+.fd-table a:hover { color: var(--c); }
+.fd-mini { display: inline-block; width: 80px; height: 8px; background: var(--bg); border-radius: 99px; overflow: hidden; vertical-align: middle; }
+.fd-mini span { display: block; height: 100%; background: var(--c); border-radius: 99px; }
+
+@media (max-width: 760px) {
+  .fd-top { grid-template-columns: 1fr; justify-items: center; }
+  .fd-tiles { grid-template-columns: repeat(2, 1fr); width: 100%; }
+  .fd-grid { grid-template-columns: 1fr; }
+  .fd-table th:nth-child(5), .fd-table td:nth-child(5) { display: none; }
+  .fd-mini { width: 50px; }
+}

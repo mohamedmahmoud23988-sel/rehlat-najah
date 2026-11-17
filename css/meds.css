@@ -1,0 +1,93 @@
+/* صفحة مواعيد الأدوية */
+
+.md-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+.md-date { font-size: .9rem; color: var(--c); font-weight: 700; }
+.md-count {
+  background: var(--c); color: #fff;
+  font-weight: 800; font-size: .9rem;
+  padding: 4px 14px; border-radius: 99px;
+  white-space: nowrap;
+}
+.md-count:empty { display: none; }
+.md-bar { margin-bottom: 14px; height: 10px; }
+
+/* صف الدواء في جدول النهارده */
+.md-slot { font-size: .8rem; font-weight: 800; color: var(--muted); margin: 12px 0 6px; }
+.md-slot:first-child { margin-top: 0; }
+.md-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 2px solid transparent;
+  margin-bottom: 6px;
+  transition: all .2s;
+}
+.md-row.done { background: #e3f6ea; border-color: #b9e4c9; }
+.md-pill {
+  width: 42px; height: 42px; flex-shrink: 0;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  font-size: 1.3rem;
+  background: #fff;
+}
+.md-info { flex: 1; min-width: 0; }
+.md-name { display: block; font-weight: 800; font-size: 1.02rem; }
+.md-meta { display: block; font-size: .8rem; color: var(--muted); }
+.md-meta b { color: var(--text); font-weight: 700; }
+.md-course {
+  font-size: .75rem; font-weight: 700;
+  padding: 2px 10px; border-radius: 99px;
+  background: var(--cl); color: var(--c);
+  white-space: nowrap;
+}
+.md-row.done .md-name { color: #1e7a46; }
+.md-row .pr-check .bc-box { width: 34px; height: 34px; }
+.md-row.done .pr-check input:checked ~ .bc-box { background: #1e7a46; border-color: #1e7a46; }
+
+.md-empty { text-align: center; color: var(--muted); padding: 14px 0; font-size: .92rem; }
+.md-all-done { text-align: center; font-weight: 800; color: #1e7a46; margin-top: 8px; }
+
+/* الاستمارة */
+.md-ongoing {
+  display: flex !important; align-items: center; gap: 6px;
+  font-weight: 500 !important; font-size: .82rem !important;
+  margin-top: 6px; color: var(--muted);
+  cursor: pointer;
+}
+.md-ongoing input { width: 16px; height: 16px; accent-color: var(--c); }
+#medForm .form-actions { margin-top: 4px; }
+#medForm input:disabled { background: var(--bg); color: var(--muted); }
+
+/* كل الأدوية */
+.md-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.md-item:last-child { border-bottom: none; }
+.md-item .md-info { font-size: .9rem; }
+.md-status {
+  font-size: .72rem; font-weight: 700;
+  padding: 2px 10px; border-radius: 99px;
+  white-space: nowrap;
+}
+.md-status.active { background: #e3f6ea; color: #1e7a46; }
+.md-status.upcoming { background: var(--cl); color: var(--c); }
+.md-status.ended { background: var(--border); color: var(--muted); }
+.md-act {
+  font: inherit; font-size: .78rem; font-weight: 700;
+  border: none; border-radius: 8px;
+  padding: 4px 10px;
+  cursor: pointer;
+  background: var(--bg); color: var(--text);
+}
+.md-act:hover { background: var(--border); }
+.md-act.danger { color: #c0392b; }
+.md-group-title { font-size: .85rem; font-weight: 800; color: var(--muted); margin: 14px 0 2px; }
+.md-group-title:first-child { margin-top: 0; }
+
+@media (max-width: 460px) {
+  .md-row { flex-wrap: wrap; }
+  .md-course { order: 5; }
+}

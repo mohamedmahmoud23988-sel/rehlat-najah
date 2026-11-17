@@ -1,0 +1,103 @@
+/* صفحة الوجبات الصحية */
+
+/* وجبات النهارده */
+.ml-meal-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 2px dashed var(--border);
+  margin-bottom: 8px;
+  cursor: pointer;
+  position: relative;
+}
+.ml-meal-row input { position: absolute; opacity: 0; pointer-events: none; }
+.ml-meal-row .bc-box { width: 34px; height: 34px; font-size: 1.1rem; border-radius: 10px; }
+.ml-meal-row .mi { font-size: 1.4rem; width: 32px; text-align: center; }
+.ml-meal-row .t { flex: 1; min-width: 0; }
+.ml-meal-row .t small { display: block; font-size: .75rem; color: var(--muted); font-weight: 700; }
+.ml-meal-row .t span { font-weight: 700; }
+.ml-meal-row:has(input:checked) { background: #e3f6ea; border-style: solid; border-color: #1e7a46; }
+.ml-meal-row input:checked ~ .bc-box { background: #1e7a46; border-color: #1e7a46; color: #fff; }
+
+.ml-free {
+  text-align: center;
+  background: linear-gradient(135deg, #fff4e5, #fde8d7);
+  border-radius: 14px;
+  padding: 18px;
+}
+.ml-free .big { font-size: 2.4rem; }
+.ml-free b { display: block; font-size: 1.2rem; color: #b9531a; }
+.ml-free small { color: #8a5a32; }
+.ml-alert {
+  background: #fdf2e0; color: #9a5b00;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.ml-alert .btn { font-size: .85rem; padding: 6px 14px; }
+
+/* عرض خطة الأسبوع */
+.ml-weeknav { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.ml-weeknav-title { flex: 1; text-align: center; }
+.ml-weeknav-title small { color: var(--muted); font-size: .8rem; }
+.ml-weeknav .ap-btn { background: var(--bg); font-size: 1rem; }
+.ml-week { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.ml-day {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px;
+  background: #fff;
+}
+.ml-day.today { border: 2px solid var(--c); background: var(--cl); }
+.ml-day.free { background: #fff8ef; border-color: #f6d3b0; }
+.ml-day-h { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.ml-day-h b { font-size: .95rem; }
+.ml-day-h small { font-size: .72rem; color: var(--muted); }
+.ml-item {
+  display: flex; align-items: flex-start; gap: 6px;
+  font-size: .82rem;
+  padding: 4px 0;
+  border-top: 1px dashed var(--border);
+  cursor: pointer;
+}
+.ml-item:first-of-type { border-top: none; }
+.ml-item input { margin-top: 3px; width: 16px; height: 16px; accent-color: #1e7a46; flex-shrink: 0; cursor: pointer; }
+.ml-item input:disabled { cursor: not-allowed; }
+.ml-item .mt { flex: 1; }
+.ml-item .mt small { color: var(--muted); font-weight: 700; margin-inline-end: 3px; }
+.ml-item.done .mt { color: #1e7a46; }
+.ml-item.missed .mt { color: #c0392b; }
+.ml-item.future { opacity: .7; }
+.ml-day .free-txt { font-size: .85rem; color: #b9531a; font-weight: 700; text-align: center; padding: 12px 0; }
+.ml-week-empty { text-align: center; color: var(--muted); padding: 16px 0; }
+
+/* الاستمارة */
+.ml-form-top { display: flex; gap: 10px; align-items: end; margin-bottom: 12px; flex-wrap: wrap; }
+.ml-form-top .f { flex: 1; min-width: 200px; }
+.ml-form-top .btn-sm { flex: 0 0 auto; height: 46px; }
+.ml-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.ml-fday { background: var(--bg); border-radius: 12px; padding: 10px 12px; }
+.ml-fday-h { font-weight: 800; font-size: .92rem; margin-bottom: 6px; }
+.ml-fday-h small { color: var(--muted); font-weight: 600; }
+.ml-fday.free { background: #fff8ef; text-align: center; color: #b9531a; font-weight: 700; display: grid; place-items: center; min-height: 120px; }
+.ml-fin { display: grid; grid-template-columns: 54px 1fr; align-items: center; gap: 6px; margin-bottom: 5px; }
+.ml-fin label { font-size: .78rem; font-weight: 700; color: var(--muted); }
+.ml-fin input {
+  font: inherit; font-size: .88rem;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  min-width: 0;
+}
+.ml-fin input:focus { outline: none; border-color: var(--c); }
+.ml-repeat {
+  display: flex; align-items: center; gap: 8px;
+  margin: 14px 0 4px;
+  font-weight: 700; font-size: .92rem;
+  cursor: pointer;
+}
+.ml-repeat input { width: 18px; height: 18px; accent-color: var(--c); }

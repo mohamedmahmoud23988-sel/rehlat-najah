@@ -1,0 +1,123 @@
+/* صفحة التحديات الصحية */
+
+.ch-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+.ch-card.won { background: #f3fbf6; border-color: #b9e4c9; }
+.ch-head { display: flex; align-items: flex-start; gap: 12px; }
+.ch-head .pr-check { margin-top: 2px; }
+.ch-head .pr-check .bc-box { width: 36px; height: 36px; }
+.ch-card.won .pr-check input:checked ~ .bc-box { background: #1e7a46; border-color: #1e7a46; }
+.ch-info { flex: 1; min-width: 0; }
+.ch-info b { display: block; font-size: 1.1rem; }
+.ch-card.won .ch-info b { color: #1e7a46; }
+.ch-kind {
+  display: inline-block; vertical-align: middle;
+  font-size: .72rem; font-weight: 800;
+  padding: 1px 9px; border-radius: 99px;
+  margin-inline-start: 6px;
+}
+.ch-kind.chronic { background: #f1e8f6; color: #6c3483; }
+.ch-kind.acute { background: #fdf2e0; color: #9a5b00; }
+.ch-info small { display: block; font-size: .8rem; color: var(--muted); }
+.ch-goal { display: inline-block; margin-top: 4px; font-size: .8rem; font-weight: 700; background: var(--cl); color: var(--c); padding: 2px 10px; border-radius: 99px; }
+.ch-won-badge { display: inline-block; margin-top: 4px; font-size: .8rem; font-weight: 800; background: #1e7a46; color: #fff; padding: 2px 10px; border-radius: 99px; }
+.ch-days {
+  text-align: center; flex-shrink: 0;
+  background: var(--bg); border-radius: 10px;
+  padding: 6px 10px; line-height: 1.15;
+}
+.ch-days b { display: block; font-size: 1.25rem; }
+.ch-days small { font-size: .7rem; color: var(--muted); font-weight: 600; }
+
+.ch-steps {
+  margin-top: 12px;
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: .9rem;
+  white-space: pre-wrap;
+  line-height: 1.8;
+}
+.ch-steps-title { font-size: .78rem; font-weight: 800; color: var(--muted); display: block; margin-bottom: 2px; }
+
+/* سجل التحديثات */
+.ch-updates { margin-top: 10px; border-inline-start: 3px solid var(--cl); padding-inline-start: 12px; }
+.ch-update { font-size: .85rem; padding: 4px 0; display: flex; gap: 8px; align-items: baseline; }
+.ch-update .d { color: var(--muted); font-size: .75rem; font-weight: 700; white-space: nowrap; }
+.ch-update .x { flex: 1; white-space: pre-wrap; }
+.ch-update .ap-btn { width: 24px; height: 24px; font-size: .7rem; opacity: .6; }
+.ch-add { display: flex; gap: 8px; margin-top: 10px; }
+.ch-add input {
+  flex: 1; min-width: 0;
+  font: inherit; font-size: .88rem;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.ch-add input:focus { outline: none; border-color: var(--c); }
+.ch-add .btn { font-size: .85rem; padding: 6px 14px; }
+
+.ch-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+
+/* ===== خطوات المشروع بتواريخ ===== */
+/* المحرر في الاستمارة */
+.st-editor { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.st-row { display: grid; grid-template-columns: 26px 1fr 160px 30px; gap: 6px; align-items: center; }
+.st-row .st-n {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--cl); color: var(--c);
+  display: grid; place-items: center;
+  font-size: .8rem; font-weight: 800;
+}
+.st-row input {
+  font: inherit; font-size: .9rem;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  min-width: 0;
+}
+.st-row input:focus { outline: none; border-color: var(--c); }
+.st-addbtn { align-self: flex-start; flex: none !important; }
+
+/* القايمة في الكارت */
+.st-list { margin-top: 12px; background: var(--bg); border-radius: 12px; padding: 10px 12px; }
+.st-head { display: flex; justify-content: space-between; font-size: .82rem; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+.st-head strong { color: var(--text); }
+.st-bar { height: 8px; margin-bottom: 8px; }
+.st-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 4px;
+  border-top: 1px dashed var(--border);
+  cursor: pointer;
+  font-size: .9rem;
+}
+.st-item:first-of-type { border-top: none; }
+.st-item input { width: 18px; height: 18px; accent-color: #1e7a46; flex-shrink: 0; cursor: pointer; }
+.st-item .st-n {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+  background: #fff; color: var(--muted);
+  display: grid; place-items: center;
+  font-size: .72rem; font-weight: 800;
+}
+.st-item .st-t { flex: 1; min-width: 0; font-weight: 600; }
+.st-item .st-t small { display: block; font-size: .72rem; color: var(--muted); font-weight: 600; }
+.st-item .st-tag { font-size: .72rem; font-weight: 700; padding: 1px 9px; border-radius: 99px; white-space: nowrap; background: #fff; color: var(--muted); }
+.st-item.done .st-t { color: #1e7a46; text-decoration: line-through; text-decoration-color: rgba(30,122,70,.4); }
+.st-item.done .st-tag { background: #e3f6ea; color: #1e7a46; }
+.st-item.today { background: var(--cl); border-radius: 8px; }
+.st-item.today .st-tag { background: var(--c); color: #fff; }
+.st-item.late .st-t { color: #c0392b; }
+.st-item.late .st-tag { background: #fde8e6; color: #c0392b; }
+
+@media (max-width: 460px) {
+  .st-row { grid-template-columns: 22px 1fr 30px; }
+  .st-row .st-date { grid-column: 2 / 3; }
+  .st-item { flex-wrap: wrap; }
+  .st-item .st-tag { margin-inline-start: 48px; }
+}

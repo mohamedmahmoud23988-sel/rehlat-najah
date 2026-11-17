@@ -1,0 +1,99 @@
+/* صفحة مواعيد الدكاترة والعيادات */
+
+.f[hidden] { display: none; }
+.f textarea {
+  font: inherit;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  resize: vertical;
+  min-height: 70px;
+}
+.f textarea:focus { outline: none; border-color: var(--primary); }
+
+/* الميعاد الجاي */
+.ap-next { text-align: center; }
+.ap-next-title { font-size: 1.25rem; font-weight: 800; color: var(--c); margin-top: 2px; }
+.ap-next-when { color: var(--text); font-weight: 600; margin: 2px 0 10px; }
+.ap-cd {
+  display: inline-block;
+  background: var(--c); color: #fff;
+  font-weight: 700; font-size: .9rem;
+  padding: 3px 16px; border-radius: 99px;
+}
+.ap-cd.today { background: #1e7a46; }
+.ap-next .big-check { margin-top: 14px; }
+.ap-next-notes { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+
+/* القائمة */
+.ap-group { font-size: .85rem; font-weight: 800; color: var(--muted); margin: 16px 0 6px; display: flex; align-items: center; gap: 6px; }
+.ap-group:first-child { margin-top: 0; }
+.ap-group .n { background: var(--bg); padding: 0 8px; border-radius: 99px; font-size: .75rem; }
+.ap-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 2px solid transparent;
+  margin-bottom: 6px;
+}
+.ap-day {
+  width: 48px; flex-shrink: 0;
+  text-align: center; line-height: 1.1;
+  background: #fff; border-radius: 10px;
+  padding: 6px 0;
+}
+.ap-day b { display: block; font-size: 1.3rem; font-weight: 800; }
+.ap-day small { font-size: .7rem; color: var(--muted); font-weight: 600; }
+.ap-info { flex: 1; min-width: 0; }
+.ap-title { display: block; font-weight: 800; }
+.ap-meta { display: block; font-size: .8rem; color: var(--muted); }
+.ap-notes {
+  display: block;
+  font-size: .8rem;
+  margin-top: 4px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px 8px;
+  white-space: pre-wrap;
+}
+.ap-notime { color: #b9770e; font-weight: 600; }
+.ap-tag { font-size: .75rem; font-weight: 700; padding: 2px 10px; border-radius: 99px; white-space: nowrap; }
+.ap-actions { display: flex; gap: 4px; flex-shrink: 0; }
+.ap-btn {
+  font: inherit; font-size: .8rem;
+  width: 30px; height: 30px;
+  border: none; border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+.ap-btn:hover { background: var(--border); }
+.ap-row .pr-check .bc-box { width: 32px; height: 32px; }
+
+.ap-row.today { background: var(--cl); border-color: var(--c); }
+.ap-row.today .ap-tag { background: var(--c); color: #fff; }
+.ap-row.upcoming .ap-tag { background: #fff; color: var(--c); }
+.ap-row.upcoming .bc-box { border-color: #cfd5d3; background: #f1f1f1; }
+.ap-row.upcoming .pr-check { cursor: not-allowed; }
+.ap-row.missed { background: #fdecea; border-color: #f1b0a8; }
+.ap-row.missed .ap-tag { background: #c0392b; color: #fff; }
+.ap-row.missed .ap-title { color: #c0392b; }
+.ap-row.done { background: #e3f6ea; }
+.ap-row.done .ap-tag { background: #1e7a46; color: #fff; }
+.ap-row.done .pr-check input:checked ~ .bc-box { background: #1e7a46; border-color: #1e7a46; }
+.ap-row.cancelled { opacity: .6; }
+.ap-row.cancelled .ap-title { text-decoration: line-through; }
+.ap-row.cancelled .ap-tag { background: var(--border); color: var(--muted); }
+
+.ap-rate { text-align: center; font-size: .9rem; margin-top: 10px; color: var(--muted); }
+.ap-rate strong { color: var(--text); }
+
+#apFormCard.editing { outline: 3px solid var(--c); outline-offset: 2px; }
+
+@media (max-width: 460px) {
+  .ap-row { flex-wrap: wrap; }
+  .ap-info { flex-basis: calc(100% - 64px); }
+  .ap-tag { margin-inline-start: 60px; }
+  .ap-actions { margin-inline-start: auto; }
+}

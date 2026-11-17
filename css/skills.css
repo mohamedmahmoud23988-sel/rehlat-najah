@@ -1,0 +1,99 @@
+/* صفحة المهارات */
+
+.sk-box { background: var(--bg); border-radius: 14px; padding: 12px 14px; margin-top: 12px; }
+.sk-h4 { font-size: .98rem; margin-bottom: 10px; }
+.sk-box .f input, .sk-box .f select { background: #fff; }
+.sk-inline { display: flex; gap: 8px; align-items: center; }
+.sk-inline input { width: 90px; flex: none; }
+.sk-inline select { flex: 1; }
+.sk-inline span { color: var(--muted); font-weight: 600; font-size: .9rem; }
+.f[hidden] { display: none; }
+
+.sk-days { display: flex; flex-wrap: wrap; gap: 6px; }
+.sk-day { cursor: pointer; }
+.sk-day input { position: absolute; opacity: 0; pointer-events: none; }
+.sk-day span {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: .85rem; font-weight: 700;
+  transition: all .15s;
+}
+.sk-day input:checked + span { background: var(--c); color: #fff; border-color: var(--c); }
+.sk-day input:focus-visible + span { outline: 3px solid var(--cl); outline-offset: 2px; }
+.sk-gen { margin: 6px 0 12px; flex: none !important; }
+.sk-sess-head { display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: .9rem; margin-bottom: 6px; }
+.sk-sess-head small { color: var(--muted); font-weight: 600; }
+.sk-sess-head .btn-sm { flex: none; padding: 4px 12px; }
+.sk-sessions { display: flex; flex-direction: column; gap: 6px; max-height: 320px; overflow-y: auto; }
+.sk-sessions .st-row { grid-template-columns: 26px 1fr 130px 30px; }
+
+/* كارت المهارة */
+.sk-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  font-size: 1.4rem;
+  background: var(--cl);
+}
+.sk-card .ch-info small + small { margin-top: 1px; }
+.sk-levels { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+.sk-lv { font-size: .85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+.sk-lv select {
+  font: inherit; font-size: .85rem; font-weight: 700;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--cl); color: var(--c);
+  cursor: pointer;
+}
+.sk-goal { font-size: .82rem; font-weight: 700; background: #fdf2e0; color: #9a5b00; padding: 3px 10px; border-radius: 99px; }
+.sk-log { font-size: .78rem; color: var(--muted); margin-top: 6px; }
+.sk-next { font-size: .88rem; margin: 10px 0 0; color: var(--muted); }
+.sk-next strong { color: var(--c); }
+
+@media (max-width: 460px) {
+  .sk-sessions .st-row { grid-template-columns: 22px 1fr 30px; }
+  .sk-sessions .sk-stime { grid-column: 2 / 3; }
+}
+
+/* ===== الخطط السنوية ===== */
+.yp-form { display: grid; grid-template-columns: 1fr 200px auto; gap: 10px; align-items: end; }
+.yp-form .btn { height: 46px; }
+.yp-goal {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 2px solid transparent;
+  margin-bottom: 6px;
+  cursor: pointer;
+  position: relative;
+}
+.yp-goal input { position: absolute; opacity: 0; pointer-events: none; }
+.yp-goal .bc-box { width: 34px; height: 34px; font-size: 1.1rem; border-radius: 10px; }
+.yp-goal .t { flex: 1; font-weight: 700; }
+.yp-goal .t small { display: block; font-size: .75rem; color: #1e7a46; font-weight: 600; }
+.yp-goal.done { background: #e3f6ea; border-color: #b9e4c9; }
+.yp-goal.done .t { color: #1e7a46; }
+.yp-goal input:checked ~ .bc-box { background: #1e7a46; border-color: #1e7a46; color: #fff; }
+.yp-goal input:focus-visible ~ .bc-box { outline: 3px solid var(--cl); outline-offset: 2px; }
+.yp-goal .ap-btn { background: #fff; }
+.yp-review { background: #fdf2e0; color: #9a5b00; border-radius: 12px; padding: 10px 14px; font-weight: 600; margin-bottom: 14px; }
+.yp-review.good { background: #e3f6ea; color: #1e7a46; }
+.yp-motto { margin-top: 14px; }
+.yp-motto label { display: block; font-size: .88rem; font-weight: 700; margin-bottom: 4px; }
+.yp-motto-row { display: flex; gap: 8px; }
+.yp-motto-row input { flex: 1; font: inherit; padding: 9px 12px; border: 2px solid var(--border); border-radius: 10px; min-width: 0; }
+.yp-motto-row input:focus { outline: none; border-color: var(--c); }
+.yp-motto-row .btn-sm { flex: none; }
+
+/* خطوة بالسنة في الحلم الكبير */
+.st-item .st-n.st-year { width: auto; min-width: 46px; padding: 0 6px; border-radius: 99px; font-size: .75rem; }
+.st-row .st-yr { text-align: center; }
+
+@media (max-width: 560px) {
+  .yp-form { grid-template-columns: 1fr; }
+}

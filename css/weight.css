@@ -1,0 +1,64 @@
+/* متابعة الوزن (صفحة الجانب الصحي) */
+
+.wt-card { margin-top: 20px; }
+.wt-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.wt-due {
+  font-size: .78rem; font-weight: 700;
+  padding: 3px 12px; border-radius: 99px;
+  background: var(--bg); color: var(--muted);
+}
+.wt-due.due { background: #fdf2e0; color: #9a5b00; }
+.wt-due:empty { display: none; }
+
+.wt-form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; }
+.wt-form .btn { height: 46px; }
+
+.wt-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 4px 0 14px; }
+.wt-tile { background: var(--bg); border-radius: 12px; padding: 10px 8px; text-align: center; }
+.wt-tile b { display: block; font-size: 1.25rem; font-weight: 800; line-height: 1.3; color: var(--text); }
+.wt-tile small { font-size: .72rem; color: var(--muted); font-weight: 600; }
+.wt-tile .good { color: #1e7a46; }
+.wt-tile .bad { color: #c0392b; }
+
+/* الرسم البياني */
+.wt-chart { position: relative; margin-bottom: 10px; }
+/* اتجاه الرسم LTR عشان مواضع النصوص تبقى مضبوطة (الأحدث شمال والأقدم يمين محسوبين في الكود) */
+.wt-chart svg { width: 100%; height: auto; display: block; overflow: visible; direction: ltr; }
+.wt-chart .grid line { stroke: var(--border); stroke-width: 1; }
+.wt-chart .axis text { fill: var(--muted); font-size: 11px; font-family: inherit; }
+.wt-chart .band { fill: #52be80; opacity: .14; }
+.wt-chart .band-label { fill: #1e7a46; font-size: 11px; font-weight: 700; font-family: inherit; }
+.wt-chart .line { fill: none; stroke: var(--c); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.wt-chart .area { fill: var(--c); opacity: .08; }
+.wt-chart .dot { fill: var(--c); stroke: #fff; stroke-width: 2; }
+.wt-chart .hit { fill: transparent; cursor: pointer; }
+.wt-chart .last-label { fill: var(--text); font-size: 12px; font-weight: 800; font-family: inherit; }
+.wt-tip {
+  position: absolute;
+  transform: translate(-50%, -110%);
+  background: var(--text); color: #fff;
+  font-size: .8rem; font-weight: 600;
+  padding: 4px 10px; border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0; transition: opacity .15s;
+}
+.wt-tip.show { opacity: 1; }
+.wt-one { text-align: center; color: var(--muted); font-size: .88rem; padding: 6px 0 12px; }
+
+/* السجل */
+.wt-hist-title { font-size: .85rem; font-weight: 800; color: var(--muted); margin: 6px 0 4px; }
+.wt-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: .9rem; }
+.wt-row:last-child { border-bottom: none; }
+.wt-row .d { flex: 1; color: var(--muted); }
+.wt-row .kg { font-weight: 800; }
+.wt-row .diff { font-size: .78rem; font-weight: 700; min-width: 64px; text-align: center; }
+.wt-row .diff.down { color: #1e7a46; }
+.wt-row .diff.up { color: #c0392b; }
+.wt-row .diff.same { color: var(--muted); }
+
+@media (max-width: 460px) {
+  .wt-form { grid-template-columns: 1fr 1fr; }
+  .wt-form .btn { grid-column: 1 / -1; }
+  .wt-tiles { grid-template-columns: repeat(2, 1fr); }
+}

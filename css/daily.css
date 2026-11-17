@@ -1,0 +1,86 @@
+/* صفحة المهمة اليومية */
+
+/* ===== Item (daily task) page ===== */
+.ip-card { margin-top: 14px; }
+.ip-title { font-size: 1.05rem; margin-bottom: 12px; }
+.streak {
+  display: inline-block;
+  background: #fdf2e0; color: #9a5b00;
+  font-weight: 700; font-size: .88rem;
+  padding: 3px 14px; border-radius: 99px;
+}
+.streak:empty { display: none; }
+
+.today-task { text-align: center; }
+.tt-label { color: var(--muted); font-size: .85rem; }
+.tt-date { font-size: 1.2rem; font-weight: 700; color: var(--c); margin-bottom: 14px; }
+.big-check {
+  position: relative;
+  display: flex; align-items: center; gap: 14px;
+  background: var(--bg);
+  border: 2px dashed var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  cursor: pointer;
+  text-align: right;
+  transition: all .2s;
+}
+.big-check:hover { border-color: var(--c); }
+.big-check input { position: absolute; opacity: 0; pointer-events: none; }
+.bc-box {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 12px;
+  border: 3px solid var(--c);
+  display: grid; place-items: center;
+  color: transparent;
+  font-size: 1.4rem; font-weight: 800;
+  background: #fff;
+  transition: all .2s;
+}
+.bc-text { font-size: 1.1rem; font-weight: 700; }
+.big-check input:checked ~ .bc-box { background: var(--c); color: #fff; transform: scale(1.05); }
+.big-check:has(input:checked) { background: var(--cl); border-style: solid; border-color: var(--c); }
+.big-check input:focus-visible ~ .bc-box { outline: 3px solid var(--cl); outline-offset: 2px; }
+
+.ip-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+.ip-stat { background: var(--bg); border-radius: 12px; padding: 10px 4px; text-align: center; }
+.ip-stat b { display: block; font-size: 1.4rem; line-height: 1.2; }
+.ip-stat small { font-size: .72rem; color: var(--muted); }
+.ip-stat.done b { color: #1e7a46; }
+.ip-stat.late b { color: #c0392b; }
+.ip-progress { height: 14px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.ip-progress div { height: 100%; background: var(--c); border-radius: 99px; transition: width .6s ease; }
+.ip-pct { display: flex; justify-content: space-between; font-size: .85rem; color: var(--muted); margin-top: 6px; }
+.ip-pct strong { color: var(--c); font-size: 1rem; }
+
+.late-count {
+  background: #fde8e6; color: #c0392b;
+  font-size: .8rem; padding: 1px 10px; border-radius: 99px;
+}
+.late-count:empty { display: none; }
+.late-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.late-row:last-child { border-bottom: none; }
+.late-row label { display: flex; align-items: center; gap: 12px; flex: 1; cursor: pointer; }
+.late-row input { width: 22px; height: 22px; accent-color: var(--c); cursor: pointer; flex-shrink: 0; }
+.late-date { flex: 1; font-weight: 600; font-size: .95rem; }
+.late-tag {
+  font-size: .75rem; font-weight: 700;
+  background: #fde8e6; color: #c0392b;
+  padding: 2px 10px; border-radius: 99px;
+  white-space: nowrap;
+}
+.empty-ok { text-align: center; color: #1e7a46; font-weight: 600; padding: 8px 0; }
+
+
+
+/* مربع التعليم مقفول (برّه أيام الرحلة) */
+.big-check.locked { opacity: .65; cursor: not-allowed; border-style: dashed; }
+.big-check.locked .bc-box { border-color: var(--border); background: #f1f1f1; }
+.big-check.locked .bc-text { font-size: .95rem; color: var(--muted); }
+.pr-row.notyet { opacity: .6; }
+.pr-row.notyet .pr-tag { background: #fdf2e0; color: #9a5b00; }
+.pr-row.notyet .bc-box { border-color: var(--border); }

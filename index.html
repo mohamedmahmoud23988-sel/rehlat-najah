@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f5c4d" />
+  <title>رحلة نجاح</title>
+  <!-- تثبيت البرنامج كتطبيق على الموبايل -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="رحلة نجاح" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/aspect.css" />
+  <link rel="stylesheet" href="css/daily.css" />
+  <link rel="stylesheet" href="css/prayer.css" />
+  <link rel="stylesheet" href="css/fasting.css" />
+  <link rel="stylesheet" href="css/meds.css" />
+  <link rel="stylesheet" href="css/appointments.css" />
+  <link rel="stylesheet" href="css/exercise.css" />
+  <link rel="stylesheet" href="css/weight.css" />
+  <link rel="stylesheet" href="css/diet.css" />
+  <link rel="stylesheet" href="css/meals.css" />
+  <link rel="stylesheet" href="css/challenges.css" />
+  <link rel="stylesheet" href="css/budget.css" />
+  <link rel="stylesheet" href="css/skills.css" />
+  <link rel="stylesheet" href="css/today.css" />
+  <link rel="stylesheet" href="css/fulldash.css" />
+  <link rel="stylesheet" href="css/journey.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="container header-inner">
+      <!-- البروفايل (يمين) -->
+      <button id="profileBtn" class="profile-chip" aria-label="البروفايل الشخصي">
+        <span class="avatar" id="headerAvatar"></span>
+        <span class="chip-text">
+          <span class="greet-small" id="headerGreet">أهلاً بيك</span>
+          <span class="greet-name" id="headerName">سجّل بياناتك</span>
+        </span>
+      </button>
+      <!-- زرار الأرشيف (لوحده فوق) -->
+      <a href="#/archive" class="hdr-btn" id="hdrArchive" title="أرشيف الرحلات" aria-label="أرشيف الرحلات">🗂️ <span>الأرشيف</span></a>
+      <!-- اسم البرنامج (شمال) -->
+      <div class="brand">
+        <h1>رحلة نجاح</h1>
+        <span class="brand-icon">🧭</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== شريط البروفايل الجانبي ===== -->
+  <div id="sidebarBackdrop" class="backdrop"></div>
+  <aside id="profileSidebar" class="sidebar" aria-label="البروفايل الشخصي">
+    <div class="sidebar-inner">
+      <button class="modal-close" id="closeProfile" aria-label="إخفاء البروفايل" title="إخفاء">✕</button>
+
+      <!-- عرض البروفايل والتحليلات -->
+      <div id="profileView" class="view">
+        <div class="pv-head">
+          <span class="avatar avatar-lg" id="pvAvatar"></span>
+          <h2 id="pvName"></h2>
+          <p class="pv-email" id="pvEmail"></p>
+        </div>
+
+        <div class="pv-basics">
+          <div><span id="pvAgeYears"></span><small>سنة</small></div>
+          <div><span id="pvWeight"></span><small>كجم</small></div>
+          <div><span id="pvHeight"></span><small>سم</small></div>
+        </div>
+
+        <h3 class="pv-section">👤 بياناتي</h3>
+        <div class="info-box" id="pvExtra"></div>
+
+        <h3 class="pv-section">🎂 العمر</h3>
+        <div class="info-box" id="ageBox"></div>
+
+        <h3 class="pv-section">⚖️ تحليل الوزن</h3>
+        <div class="info-box">
+          <div class="bmi-top">
+            <span>مؤشر كتلة الجسم (BMI)</span>
+            <strong id="bmiValue"></strong>
+          </div>
+          <div class="bmi-gauge">
+            <div class="bmi-seg s1"></div><div class="bmi-seg s2"></div>
+            <div class="bmi-seg s3"></div><div class="bmi-seg s4"></div>
+            <div class="bmi-marker" id="bmiMarker"></div>
+          </div>
+          <div class="bmi-scale"><span>نحافة</span><span>طبيعي</span><span>زيادة</span><span>سمنة</span></div>
+          <p class="bmi-cat" id="bmiCat"></p>
+          <div id="weightAdvice"></div>
+        </div>
+
+        <h3 class="pv-section">🍽️ احتياجاتك اليومية</h3>
+        <div class="needs" id="needsBox"></div>
+
+        <p class="disclaimer">التحليلات دي تقديرية للاسترشاد، ومش بديل عن استشارة الطبيب أو أخصائي التغذية.</p>
+        <button id="editProfileBtn" class="btn btn-outline btn-block">✎ تعديل البيانات</button>
+        <a href="#/archive" class="btn btn-primary btn-block pv-archive">🗂️ أرشيف الرحلات</a>
+      </div>
+
+      <!-- فورم التسجيل / التعديل -->
+      <form id="profileForm" class="view" novalidate>
+        <h2 class="form-title">البروفايل الشخصي</h2>
+
+        <div class="photo-pick">
+          <label for="photoInput" class="photo-label">
+            <span class="avatar avatar-lg" id="formAvatar"></span>
+            <span class="photo-hint">📷 اختار صورة</span>
+          </label>
+          <input type="file" id="photoInput" accept="image/*" hidden />
+        </div>
+
+        <div class="form-grid">
+          <div class="f full">
+            <label for="pName">الاسم *</label>
+            <input id="pName" type="text" required />
+          </div>
+          <div class="f">
+            <label for="pBirth">تاريخ الميلاد *</label>
+            <input id="pBirth" type="date" required />
+          </div>
+          <div class="f">
+            <label for="pGender">النوع *</label>
+            <select id="pGender" required>
+              <option value="">اختار…</option>
+              <option value="male">ذكر</option>
+              <option value="female">أنثى</option>
+            </select>
+          </div>
+          <div class="f full">
+            <label for="pEmail">الإيميل</label>
+            <input id="pEmail" type="email" dir="ltr" />
+          </div>
+          <div class="f">
+            <label for="pWeight">الوزن (كجم) *</label>
+            <input id="pWeight" type="number" min="20" max="300" step="0.1" required />
+          </div>
+          <div class="f">
+            <label for="pHeight">الطول (سم) *</label>
+            <input id="pHeight" type="number" min="80" max="250" required />
+          </div>
+          <div class="f full">
+            <label for="pActivity">مستوى النشاط</label>
+            <select id="pActivity">
+              <option value="1.2">قليل جداً (شغل مكتبي من غير رياضة)</option>
+              <option value="1.375" selected>خفيف (رياضة 1-3 أيام في الأسبوع)</option>
+              <option value="1.55">متوسط (رياضة 3-5 أيام في الأسبوع)</option>
+              <option value="1.725">عالي (رياضة 6-7 أيام في الأسبوع)</option>
+            </select>
+          </div>
+        </div>
+        <!-- الوظيفة والحالة الاجتماعية والاهتمامات (بتتبني من js/profile-extra.js) -->
+        <div class="form-grid" id="pExtraGrid" style="margin-top:12px"></div>
+        <p id="profileError" class="error"></p>
+        <div class="form-actions">
+          <button type="button" id="cancelEditBtn" class="btn btn-outline">إلغاء</button>
+          <button type="submit" class="btn btn-primary">حفظ</button>
+        </div>
+      </form>
+
+      <!-- النسخة الاحتياطية -->
+      <section class="backup-box">
+        <h3 class="backup-title">💾 النسخة الاحتياطية</h3>
+        <p class="backup-info" id="backupInfo"></p>
+        <div class="backup-actions">
+          <button type="button" class="btn btn-primary btn-sm" id="exportBtn">⬇ حفظ نسخة</button>
+          <label class="btn btn-outline btn-sm" for="importInput">⬆ استرجاع نسخة</label>
+          <input type="file" id="importInput" accept=".json,application/json" hidden />
+        </div>
+      </section>
+
+      <!-- الحساب -->
+      <section class="backup-box account-box">
+        <h3 class="backup-title">🔐 الحساب</h3>
+        <p class="backup-info" id="accEmail"></p>
+        <details class="acc-pass">
+          <summary>🔑 تغيير الباسورد</summary>
+          <form id="passForm" novalidate>
+            <input id="pwOld" type="password" dir="ltr" placeholder="الباسورد الحالي" autocomplete="current-password" />
+            <input id="pwNew" type="password" dir="ltr" placeholder="الباسورد الجديد (6 حروف أو أكتر)" autocomplete="new-password" />
+            <input id="pwNew2" type="password" dir="ltr" placeholder="تأكيد الباسورد الجديد" autocomplete="new-password" />
+            <p class="error" id="pwError"></p>
+            <button type="submit" class="btn btn-primary btn-sm">حفظ الباسورد</button>
+          </form>
+        </details>
+        <button type="button" class="btn btn-outline btn-sm btn-block" id="logoutBtn">🚪 تسجيل الخروج</button>
+      </section>
+    </div>
+  </aside>
+
+  <main class="container">
+  <!-- ################ الصفحة الرئيسية ################ -->
+  <div id="homePage" class="page show">
+    <!-- ===== كارت المرحلة ===== -->
+    <section class="card stage-card">
+      <!-- التاريخ -->
+      <div class="today">
+        <span class="today-label">النهارده</span>
+        <div class="today-date" id="todayDate"></div>
+        <div class="today-hijri" id="todayHijri"></div>
+      </div>
+
+      <!-- الرحلة ومراحلها (بتتبني من js/home.js) -->
+      <div id="journeyBox"></div>
+    </section>
+
+    <!-- ===== اختصار مهامي النهارده ===== -->
+    <a id="todayCta" class="today-cta" href="#/today" aria-label="مهامي النهارده"></a>
+
+    <!-- على الكمبيوتر: الجوانب عمود على اليمين واللوحة جنبها / على الموبايل: تحت بعض -->
+    <div class="home-grid">
+      <!-- ===== الجوانب الخمسة ===== -->
+      <section class="aspects">
+        <h2 class="section-title">جوانب الحياة</h2>
+        <div id="aspectsList" class="aspects-list"></div>
+      </section>
+
+      <!-- ===== لوحة المتابعة ===== -->
+      <section class="dash">
+        <div class="dash-head">
+          <h2 class="section-title">📊 لوحة المتابعة</h2>
+          <button class="dash-full" id="fullDashBtn">الداشبورد التفصيلية ‹</button>
+        </div>
+        <div id="dashList"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ################ صفحة الجانب ################ -->
+  <div id="aspectPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="backBtn">→ الرئيسية</button>
+      <div class="ah-icon" id="ahIcon"></div>
+      <h2 class="ah-name" id="ahName"></h2>
+      <p class="ah-stage" id="ahStage"></p>
+      <div class="ah-count" id="ahCount"></div>
+    </section>
+
+    <section class="aspects">
+      <h2 class="section-title">اختار اللي معاك في المرحلة دي</h2>
+      <p class="hint">لو الاختيار <strong>On</strong> يبقى معاك في المرحلة دي، ولو <strong>Off</strong> يبقى مش معاك دلوقتي، وتقدر تفعّله في مرحلة جاية.</p>
+      <div id="itemsList" class="items-list"></div>
+      <p id="itemsEmpty" class="hint center"></p>
+    </section>
+
+    <!-- متابعة الوزن (بتظهر في الجانب الصحي بس) -->
+    <section class="card ip-card wt-card" id="weightTrack" hidden>
+      <div class="wt-head">
+        <h3 class="ip-title" style="margin-bottom:0">⚖️ متابعة الوزن</h3>
+        <span class="wt-due" id="wtDue"></span>
+      </div>
+      <form id="wtForm" class="wt-form" novalidate>
+        <div class="f">
+          <label for="wtKg">وزنك الحالي (كجم)</label>
+          <input id="wtKg" type="number" min="20" max="300" step="0.1" placeholder="مثلاً: 88.5" />
+        </div>
+        <div class="f">
+          <label for="wtDate">التاريخ</label>
+          <input id="wtDate" type="date" />
+        </div>
+        <button type="submit" class="btn btn-primary">سجّل الوزن</button>
+      </form>
+      <p class="error" id="wtError"></p>
+      <div id="wtStats"></div>
+      <div id="wtChart"></div>
+      <div id="wtHistory"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة المهمة اليومية (مثلاً التوبة) ################ -->
+  <div id="itemPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="itemBackBtn">→ رجوع</button>
+      <div class="ah-icon" id="ipIcon"></div>
+      <h2 class="ah-name" id="ipName"></h2>
+      <p class="ah-stage" id="ipStage"></p>
+      <div class="streak" id="ipStreak"></div>
+    </section>
+
+    <!-- مهمة النهارده -->
+    <section class="card ip-card today-task">
+      <p class="tt-label">النهارده</p>
+      <p class="tt-date" id="ttDate"></p>
+      <label class="big-check">
+        <input type="checkbox" id="todayCheck" />
+        <span class="bc-box">✓</span>
+        <span class="bc-text" id="ttText"></span>
+      </label>
+    </section>
+
+    <!-- التقدم في المرحلة -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📊 تقدّمك في المرحلة</h3>
+      <div id="ipProgress"></div>
+    </section>
+
+    <!-- الأيام المتأخرة -->
+    <section class="card ip-card">
+      <h3 class="ip-title">⏰ أيام متأخر عليها <span class="late-count" id="lateCount"></span></h3>
+      <div id="lateList"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة الصلاة ################ -->
+  <div id="prayerPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="prayerBackBtn">→ رجوع</button>
+      <div class="ah-icon">🕋</div>
+      <h2 class="ah-name">الصلاة</h2>
+      <p class="ah-stage" id="prStage"></p>
+      <div class="streak" id="prStreak"></div>
+    </section>
+
+    <!-- صلوات النهارده -->
+    <section class="card ip-card">
+      <div class="pr-head">
+        <div>
+          <p class="tt-label">صلوات النهارده</p>
+          <p class="pr-date" id="prDate"></p>
+        </div>
+        <div class="pr-loc">
+          <span aria-hidden="true">📍</span>
+          <select id="prCity" aria-label="المدينة"></select>
+          <button id="prLocate" class="pr-locate" title="حدّد موقعي الحالي" aria-label="حدّد موقعي الحالي">🎯</button>
+        </div>
+      </div>
+      <div class="pr-next" id="prNext"></div>
+      <div class="pr-list" id="prList"></div>
+      <p class="pr-all-done" id="prAllDone"></p>
+      <p class="pr-note">المواقيت محسوبة حسب مدينتك، وممكن تختلف دقيقة أو اتنين عن التقويم.</p>
+    </section>
+
+    <!-- التقدم -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📊 تقدّمك في المرحلة</h3>
+      <div id="prProgress"></div>
+    </section>
+
+    <!-- الصلوات الفائتة -->
+    <section class="card ip-card">
+      <h3 class="ip-title">⚠️ صلوات فائتة <span class="late-count" id="prMissedCount"></span></h3>
+      <div id="prMissed"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة الصوم ################ -->
+  <div id="fastPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="fastBackBtn">→ رجوع</button>
+      <div class="ah-icon">🌅</div>
+      <h2 class="ah-name">الصوم</h2>
+      <p class="ah-stage" id="fsStage"></p>
+      <div class="streak">صيام الاثنين والخميس</div>
+    </section>
+
+    <!-- النهارده -->
+    <section class="card ip-card today-task" id="fsToday"></section>
+
+    <!-- التقدم -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📊 تقدّمك في المرحلة</h3>
+      <div id="fsProgress"></div>
+    </section>
+
+    <!-- أيام الصيام -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📅 أيام الصيام في المرحلة</h3>
+      <div id="fsList"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة مواعيد الأدوية ################ -->
+  <div id="medsPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="medsBackBtn">→ رجوع</button>
+      <div class="ah-icon">💊</div>
+      <h2 class="ah-name">مواعيد الأدوية والعلاج</h2>
+      <p class="ah-stage" id="mdStage"></p>
+      <div class="streak" id="mdStreak"></div>
+    </section>
+
+    <!-- جدول النهارده -->
+    <section class="card ip-card">
+      <div class="md-head">
+        <div>
+          <h3 class="ip-title" style="margin-bottom:0">📋 جدول أدوية النهارده</h3>
+          <p class="md-date" id="mdDate"></p>
+        </div>
+        <span class="md-count" id="mdCount"></span>
+      </div>
+      <div class="ip-progress md-bar"><div id="mdBar"></div></div>
+      <div id="mdToday"></div>
+    </section>
+
+    <!-- استمارة الإضافة -->
+    <section class="card ip-card">
+      <h3 class="ip-title">➕ إضافة دواء</h3>
+      <form id="medForm" novalidate>
+        <div class="form-grid">
+          <div class="f">
+            <label for="mdName">اسم الدواء *</label>
+            <input id="mdName" type="text" list="mdNameList" autocomplete="off" required />
+            <datalist id="mdNameList"></datalist>
+          </div>
+          <div class="f">
+            <label for="mdDisease">اسم المرض</label>
+            <input id="mdDisease" type="text" list="mdDiseaseList" autocomplete="off" />
+            <datalist id="mdDiseaseList"></datalist>
+          </div>
+          <div class="f">
+            <label for="mdTime">الميعاد *</label>
+            <select id="mdTime" required></select>
+          </div>
+          <div class="f">
+            <label for="mdDose">الجرعة</label>
+            <input id="mdDose" type="text" placeholder="مثلاً: قرص واحد / 10 وحدات" />
+          </div>
+          <div class="f">
+            <label for="mdDays">مدة الجرعة (بالأيام) *</label>
+            <input id="mdDays" type="number" min="1" max="3650" placeholder="مثلاً: 7" />
+            <label class="md-ongoing"><input type="checkbox" id="mdOngoing" /> دواء مستمر (من غير مدة)</label>
+          </div>
+          <div class="f">
+            <label for="mdStart">يبدأ من</label>
+            <input id="mdStart" type="date" />
+          </div>
+        </div>
+        <p id="mdError" class="error"></p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" id="mdClear">مسح</button>
+          <button type="submit" class="btn btn-primary">➕ إضافة للجدول</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- الالتزام في المرحلة -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📊 التزامك بالأدوية في المرحلة</h3>
+      <div id="mdProgress"></div>
+    </section>
+
+    <!-- كل الأدوية -->
+    <section class="card ip-card">
+      <h3 class="ip-title">🗂️ كل الأدوية</h3>
+      <div id="mdAll"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة مواعيد الدكاترة والعيادات ################ -->
+  <div id="apptsPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="apBackBtn">→ رجوع</button>
+      <div class="ah-icon">🩺</div>
+      <h2 class="ah-name">مواعيد الدكاترة والعيادات</h2>
+      <p class="ah-stage" id="apStage"></p>
+    </section>
+
+    <!-- الميعاد الجاي -->
+    <section class="card ip-card ap-next" id="apNext"></section>
+
+    <!-- استمارة الحجز -->
+    <section class="card ip-card" id="apFormCard">
+      <h3 class="ip-title" id="apFormTitle">➕ إضافة ميعاد</h3>
+      <form id="apForm" novalidate>
+        <div class="form-grid">
+          <div class="f">
+            <label for="apType">نوع الميعاد *</label>
+            <select id="apType"></select>
+          </div>
+          <div class="f" id="apOtherWrap" hidden>
+            <label for="apOther">اكتب نوع الميعاد *</label>
+            <input id="apOther" type="text" placeholder="مثلاً: جلسة علاج طبيعي" />
+          </div>
+          <div class="f">
+            <label for="apSpec" id="apSpecLabel">التخصص</label>
+            <input id="apSpec" type="text" list="apSpecList" autocomplete="off" />
+            <datalist id="apSpecList"></datalist>
+          </div>
+          <div class="f">
+            <label for="apDoctor">اسم الدكتور / المكان</label>
+            <input id="apDoctor" type="text" list="apDoctorList" autocomplete="off" />
+            <datalist id="apDoctorList"></datalist>
+          </div>
+          <div class="f">
+            <label for="apDate">تاريخ الحجز *</label>
+            <input id="apDate" type="date" />
+          </div>
+          <div class="f">
+            <label for="apTime">الساعة</label>
+            <input id="apTime" type="time" />
+          </div>
+          <div class="f full">
+            <label for="apNotes">ملاحظات</label>
+            <textarea id="apNotes" rows="3" placeholder="مثلاً: الدكتور طلب تحليل سكر تراكمي وأشعة على الصدر"></textarea>
+          </div>
+        </div>
+        <p id="apError" class="error"></p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" id="apCancelEdit" hidden>إلغاء التعديل</button>
+          <button type="button" class="btn btn-outline" id="apClear">مسح</button>
+          <button type="submit" class="btn btn-primary" id="apSubmit">➕ إضافة الميعاد</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- مواعيدي -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📅 مواعيدي</h3>
+      <div id="apList"></div>
+    </section>
+
+    <!-- الالتزام -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📊 التزامك بالمواعيد في المرحلة</h3>
+      <div id="apProgress"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة التمارين والرياضة ################ -->
+  <div id="exercisePage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="exBackBtn">→ رجوع</button>
+      <div class="ah-icon">🏃</div>
+      <h2 class="ah-name">التمارين والرياضة</h2>
+      <p class="ah-stage" id="exStage"></p>
+      <div class="streak" id="exStreak"></div>
+    </section>
+
+    <!-- الأسبوع ده -->
+    <section class="card ip-card" id="exWeek"></section>
+
+    <!-- استمارة الإضافة -->
+    <section class="card ip-card" id="exFormCard">
+      <h3 class="ip-title" id="exFormTitle">➕ إضافة تمرين</h3>
+      <form id="exForm" novalidate>
+        <div class="form-grid">
+          <div class="f">
+            <label for="exType">نوع الرياضة *</label>
+            <select id="exType"></select>
+          </div>
+          <div class="f" id="exOtherWrap" hidden>
+            <label for="exOther">اكتب نوع الرياضة *</label>
+            <input id="exOther" type="text" placeholder="مثلاً: سباحة" />
+          </div>
+          <div class="f">
+            <label for="exIntensity">الشدة</label>
+            <select id="exIntensity">
+              <option value="light">خفيفة</option>
+              <option value="moderate" selected>متوسطة</option>
+              <option value="vigorous">عالية</option>
+            </select>
+            <small class="ex-hint" id="exIntensityHint"></small>
+          </div>
+          <div class="f">
+            <label for="exDate">تاريخ الممارسة *</label>
+            <input id="exDate" type="date" />
+          </div>
+          <div class="f">
+            <label for="exMinutes">مدة الممارسة (بالدقايق) *</label>
+            <input id="exMinutes" type="number" min="5" max="600" step="5" placeholder="مثلاً: 30" />
+            <div class="ex-chips" id="exChips">
+              <button type="button" data-min="15">15</button>
+              <button type="button" data-min="30">30</button>
+              <button type="button" data-min="45">45</button>
+              <button type="button" data-min="60">60</button>
+              <button type="button" data-min="90">90</button>
+            </div>
+          </div>
+          <div class="f">
+            <label for="exTime">الساعة</label>
+            <input id="exTime" type="time" />
+          </div>
+          <div class="f" id="exRepeatWrap">
+            <label for="exRepeat">التكرار</label>
+            <div class="ex-repeat">
+              <select id="exRepeat">
+                <option value="once">مرة واحدة</option>
+                <option value="daily">كل يوم</option>
+                <option value="weekly">كل أسبوع</option>
+              </select>
+              <input id="exCount" type="number" min="2" max="60" value="7" aria-label="عدد المرات" hidden />
+              <span class="ex-times" id="exTimesLbl" hidden>مرة</span>
+            </div>
+          </div>
+          <div class="f full">
+            <label for="exNotes">ملاحظات</label>
+            <textarea id="exNotes" rows="2" placeholder="مثلاً: مشي في النادي مع صاحبي"></textarea>
+          </div>
+        </div>
+
+        <!-- حساب السعرات -->
+        <div class="ex-burn" id="exBurn"></div>
+
+        <p id="exError" class="error"></p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" id="exCancelEdit" hidden>إلغاء التعديل</button>
+          <button type="button" class="btn btn-outline" id="exClear">مسح</button>
+          <button type="submit" class="btn btn-primary" id="exSubmit">➕ إضافة التمرين</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- تمارينِي -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📅 تمارينِي</h3>
+      <div id="exList"></div>
+    </section>
+
+    <!-- الالتزام -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📊 التزامك بالرياضة في المرحلة</h3>
+      <div id="exProgress"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة الحمية الغذائية (الاختيارات) ################ -->
+  <div id="dietPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="dietBackBtn">→ رجوع</button>
+      <div class="ah-icon">🥗</div>
+      <h2 class="ah-name">الحمية الغذائية</h2>
+      <p class="ah-stage" id="dtStage"></p>
+    </section>
+    <section class="aspects">
+      <h2 class="section-title">اختار اللي معاك في المرحلة دي</h2>
+      <div id="dietItems" class="items-list"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة الممنوعات ################ -->
+  <div id="bansPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="bansBackBtn">→ رجوع</button>
+      <div class="ah-icon">🚫</div>
+      <h2 class="ah-name">الممنوعات</h2>
+      <p class="ah-stage" id="bnStage"></p>
+    </section>
+
+    <!-- النهارده -->
+    <section class="card ip-card" id="bnToday"></section>
+
+    <!-- استمارة الإضافة -->
+    <section class="card ip-card">
+      <h3 class="ip-title">➕ إضافة ممنوع</h3>
+      <form id="bnForm" novalidate>
+        <div class="form-grid">
+          <div class="f">
+            <label for="bnName">اسم الطعام الممنوع *</label>
+            <input id="bnName" type="text" list="bnNameList" autocomplete="off" placeholder="مثلاً: السكر المباشر" />
+            <datalist id="bnNameList"></datalist>
+          </div>
+          <div class="f">
+            <label for="bnReason">السبب</label>
+            <input id="bnReason" type="text" placeholder="مثلاً: السكر / التخسيس" />
+          </div>
+          <div class="f">
+            <label for="bnDays">مدة المنع (بالأيام) *</label>
+            <input id="bnDays" type="number" min="1" max="365" placeholder="مثلاً: 7" />
+            <div class="ex-chips" id="bnChips">
+              <button type="button" data-days="7">أسبوع</button>
+              <button type="button" data-days="14">أسبوعين</button>
+              <button type="button" data-days="21">3 أسابيع</button>
+              <button type="button" data-days="30">شهر</button>
+            </div>
+          </div>
+          <div class="f">
+            <label for="bnStart">تاريخ بداية المنع *</label>
+            <input id="bnStart" type="date" />
+          </div>
+        </div>
+        <p id="bnError" class="error"></p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" id="bnClear">مسح</button>
+          <button type="submit" class="btn btn-primary">➕ إضافة للممنوعات</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- كل الممنوعات -->
+    <section class="card ip-card">
+      <h3 class="ip-title">🚫 ممنوعاتي</h3>
+      <div id="bnList"></div>
+    </section>
+
+    <!-- الالتزام -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📊 التزامك بالممنوعات في المرحلة</h3>
+      <div id="bnProgress"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة الوجبات الصحية ################ -->
+  <div id="mealsPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="mealsBackBtn">→ رجوع</button>
+      <div class="ah-icon">🥗</div>
+      <h2 class="ah-name">الوجبات الصحية</h2>
+      <p class="ah-stage" id="mlStage"></p>
+      <div class="streak" id="mlStreak"></div>
+    </section>
+
+    <!-- وجبات النهارده -->
+    <section class="card ip-card" id="mlToday"></section>
+
+    <!-- خطة الأسبوع (عرض) -->
+    <section class="card ip-card">
+      <div class="ml-weeknav">
+        <button class="ap-btn" id="mlPrev" title="الأسبوع اللي قبله" aria-label="الأسبوع اللي قبله">→</button>
+        <div class="ml-weeknav-title">
+          <h3 class="ip-title" style="margin:0" id="mlWeekTitle"></h3>
+          <small id="mlWeekSub"></small>
+        </div>
+        <button class="ap-btn" id="mlNext" title="الأسبوع اللي بعده" aria-label="الأسبوع اللي بعده">←</button>
+      </div>
+      <div id="mlWeek"></div>
+    </section>
+
+    <!-- استمارة خطة الأسبوع -->
+    <section class="card ip-card" id="mlFormCard">
+      <h3 class="ip-title">📝 خطة أكل الأسبوع</h3>
+      <form id="mlForm" novalidate>
+        <div class="ml-form-top">
+          <div class="f">
+            <label for="mlStart">تاريخ بداية الأسبوع</label>
+            <input id="mlStart" type="date" />
+            <small class="ex-hint" id="mlRange"></small>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" id="mlCopy">📋 انسخ من آخر خطة</button>
+        </div>
+        <datalist id="mlSuggest"></datalist>
+        <div id="mlDays" class="ml-days"></div>
+        <label class="ml-repeat">
+          <input type="checkbox" id="mlRepeat" />
+          <span>🔁 كرّر الخطة دي كل أسبوع لحد ما أغيّرها</span>
+        </label>
+        <p id="mlError" class="error"></p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" id="mlClear">مسح</button>
+          <button type="submit" class="btn btn-primary">💾 حفظ خطة الأسبوع</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- الالتزام -->
+    <section class="card ip-card">
+      <h3 class="ip-title">📊 التزامك بالوجبات الصحية في المرحلة</h3>
+      <div id="mlProgress"></div>
+    </section>
+  </div>
+
+  <!-- ################ صفحة التحديات الصحية ################ -->
+  <div id="challengesPage" class="page">
+    <section class="card aspect-hero">
+      <button class="back-btn" id="chBackBtn">→ رجوع</button>
+      <div class="ah-icon">🎯</div>
+      <h2 class="ah-name">التحديات الصحية</h2>
+      <p class="ah-stage" id="chStage"></p>
+      <p class="hint center" style="margin:6px 0 0">تحديات مفتوحة المدة — بتفضل معاك لحد ما تتغلب عليها 💪</p>
+    </section>
+
+    <!-- ملخص -->
+    <section class="card ip-card" id="chSummary"></section>
+
+    <!-- استمارة الإضافة -->
+    <section class="card ip-card" id="chFormCard">
+      <h3 class="ip-title" id="chFormTitle">➕ إضافة تحدي</h3>
+      <form id="chForm" novalidate>
+        <div class="form-grid">
+          <div class="f">
+            <label for="chName">التحدي *</label>
+            <input id="chName" type="text" list="chNameList" autocomplete="off" placeholder="مثلاً: مرض السكر / تساقط الشعر" />
+            <datalist id="chNameList"></datalist>
+          </div>
+          <div class="f">
+            <label for="chKind">نوع التحدي *</label>
+            <select id="chKind">
+              <option value="chronic">🔄 مرض مزمن</option>
+              <option value="acute">⚡ مرض عارض</option>
+            </select>
+          </div>
+          <div class="f">
+            <label for="chStart">تاريخ الظهور / البداية</label>
+            <input id="chStart" type="date" />
+          </div>
+          <div class="f">
+            <label for="chGoal">الهدف</label>
+            <input id="chGoal" type="text" placeholder="مثلاً: السكر التراكمي أقل من 7 / وقف تساقط الشعر" />
+          </div>
+          <div class="f full">
+            <label for="chSteps">الخطوات اللي بدأتها عشان أسيطر عليه</label>
+            <textarea id="chSteps" rows="4" placeholder="اكتب براحتك… مثلاً:&#10;- متابعة مع دكتور سكر كل 3 شهور&#10;- منع السكر المباشر&#10;- مشي نص ساعة كل يوم"></textarea>
+          </div>
+        </div>
+        <p id="chError" class="error"></p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" id="chCancelEdit" hidden>إلغاء التعديل</button>
+          <button type="button" class="btn btn-outline" id="chClear">مسح</button>
+          <button type="submit" class="btn btn-primary" id="chSubmit">➕ إضافة التحدي</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- التحديات -->
+    <section class="card ip-card">
+      <h3 class="ip-title">🎯 تحدياتي</h3>
+      <div id="chList"></div>
+    </section>
+  </div>
+
+  <!-- ################ الجانب العائلي ################ -->
+  <!-- الصفحات دي بتتبني من القوالب في js/open-list.js -->
+  <div id="affairsPage" class="page"></div>
+  <div id="smallFamilyPage" class="page"></div>
+  <div id="homeTasksPage" class="page"></div>
+  <div id="wifeKidsPage" class="page"></div>
+  <div id="projectsHubPage" class="page"></div>
+  <div id="familyProjectsPage" class="page"></div>
+  <div id="budgetPage" class="page"></div>
+
+  <!-- ################ الجانب العملي ################ -->
+  <div id="workTasksPage" class="page"></div>
+  <div id="businessPage" class="page"></div>
+
+  <!-- ################ الجانب الشخصي ################ -->
+  <div id="skillsPage" class="page"></div>
+  <div id="growthPage" class="page"></div>
+  <div id="goalHubPage" class="page"></div>
+  <div id="yearPlansPage" class="page"></div>
+  <div id="dreamPage" class="page"></div>
+
+  <!-- ################ مهامي النهارده ################ -->
+  <div id="todayPage" class="page"></div>
+
+  <!-- ################ الداشبورد التفصيلية ################ -->
+  <div id="fullDashPage" class="page"></div>
+
+  <!-- ################ الرحلة والأرشيف ################ -->
+  <div id="journeyPage" class="page"></div>
+  <div id="archivePage" class="page"></div>
+  </main>
+
+  <!-- ===== رسالة التهنئة ===== -->
+  <div id="celebrate" class="celebrate" aria-hidden="true">
+    <div class="cel-card">
+      <div class="cel-emoji" id="celEmoji">🎉</div>
+      <p class="cel-msg" id="celMsg"></p>
+      <button class="btn btn-primary" id="celClose">الحمد لله</button>
+    </div>
+  </div>
+
+  <!-- رسالة صغيرة -->
+  <div id="toast" class="toast"></div>
+
+  <!-- الترتيب مهم: الإعدادات والأدوات الأول، والتشغيل في الآخر -->
+  <script src="js/session.js"></script> <!-- لازم يبقى الأول: بيفصل بيانات كل حساب -->
+  <script src="js/config.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/profile-extra.js"></script>
+  <script src="js/auth-ui.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/weight.js"></script>
+  <script src="js/open-list.js"></script>
+  <script src="js/session-tracker.js"></script>
+  <script src="js/aspect-page.js"></script>
+  <script src="js/pages/daily.js"></script>
+  <script src="js/pages/prayer.js"></script>
+  <script src="js/pages/fasting.js"></script>
+  <script src="js/pages/meds.js"></script>
+  <script src="js/pages/appointments.js"></script>
+  <script src="js/pages/exercise.js"></script>
+  <script src="js/pages/diet.js"></script>
+  <script src="js/pages/meals.js"></script>
+  <script src="js/pages/challenges.js"></script>
+  <script src="js/pages/affairs.js"></script>
+  <script src="js/pages/budget.js"></script>
+  <script src="js/pages/work.js"></script>
+  <script src="js/pages/skills.js"></script>
+  <script src="js/pages/goals.js"></script>
+  <script src="js/pages/today.js"></script>
+  <script src="js/pages/fulldash.js"></script>
+  <script src="js/pages/journey.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

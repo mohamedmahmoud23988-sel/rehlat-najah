@@ -1,0 +1,128 @@
+/* أساسيات: الألوان، الهيدر، الكروت، الأزرار، الرسائل */
+
+:root {
+  --primary: #0f5c4d;
+  --primary-light: #e3f1ed;
+  --gold: #c9a227;
+  --bg: #f5f3ee;
+  --card: #ffffff;
+  --text: #1d2b28;
+  --muted: #6c7a76;
+  --border: #e4e1d8;
+  --error: #c0392b;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Cairo", "Segoe UI", Tahoma, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding-bottom: 40px;
+}
+
+.container { max-width: 640px; margin: 0 auto; padding: 0 16px; }
+
+/* ===== Header ===== */
+.app-header {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 0 60px;
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand-icon { font-size: 1.6rem; }
+.brand h1 { font-size: 1.35rem; font-weight: 800; }
+
+
+/* ===== Card ===== */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .07);
+  padding: 24px 20px;
+}
+.stage-card { margin-top: -44px; text-align: center; }
+
+
+/* ===== Buttons ===== */
+.btn {
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 11px 26px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform .1s, filter .2s;
+}
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-outline { background: transparent; color: var(--primary); border-color: var(--primary); }
+.btn-outline:hover { background: var(--primary-light); }
+
+
+/* ===== Pages ===== */
+.page { display: none; }
+.page.show { display: block; animation: fadeIn .25s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* عدد المفعّل على كارت الجانب في الرئيسية */
+.aspect-badge {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: 1px 10px;
+  border-radius: 99px;
+  background: var(--cl);
+  color: var(--c);
+}
+
+
+/* ===== Celebration popup ===== */
+.celebrate {
+  position: fixed; inset: 0;
+  background: rgba(10, 30, 25, .55);
+  display: none; align-items: center; justify-content: center;
+  padding: 16px;
+  z-index: 60;
+}
+.celebrate.open { display: flex; }
+.cel-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 28px 22px 22px;
+  max-width: 360px; width: 100%;
+  text-align: center;
+  animation: celPop .4s cubic-bezier(.2, 1.4, .4, 1);
+}
+@keyframes celPop { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+.cel-emoji { font-size: 3.6rem; animation: bounce 1s ease infinite alternate; }
+@keyframes bounce { to { transform: translateY(-8px); } }
+.cel-msg { font-size: 1.15rem; font-weight: 700; margin: 10px 0 18px; line-height: 1.8; }
+
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translate(-50%, 100px);
+  background: var(--text);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: .95rem;
+  opacity: 0;
+  transition: all .3s;
+  pointer-events: none;
+  max-width: calc(100% - 32px);
+  text-align: center;
+}
+.toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+

@@ -1,0 +1,96 @@
+/* الميزانية العائلية */
+
+.bd-monthnav { display: inline-flex; align-items: center; gap: 12px; margin-top: 10px; background: var(--bg); border-radius: 99px; padding: 4px 6px; }
+.bd-monthnav b { font-size: 1.05rem; min-width: 130px; }
+.bd-monthnav .ap-btn { background: #fff; font-size: 1rem; }
+
+.bd-alloc { display: flex; gap: 10px; align-items: end; margin-bottom: 14px; }
+.bd-alloc .f { flex: 1; }
+.bd-alloc .btn { height: 46px; }
+
+.bd-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+.bd-tile { background: var(--bg); border-radius: 12px; padding: 10px 8px; text-align: center; }
+.bd-tile b { display: block; font-size: 1.3rem; font-weight: 800; line-height: 1.3; color: var(--text); }
+.bd-tile small { font-size: .72rem; color: var(--muted); font-weight: 600; }
+.bd-tile.good b { color: #1e7a46; }
+.bd-tile.bad { background: #fdecea; }
+.bd-tile.bad b { color: #c0392b; }
+.bd-bar { height: 12px; }
+.bd-bar.warn div { background: #e67e22; }
+.bd-bar.over div { background: #c0392b; }
+
+/* الشرائح */
+.bd-cat { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px; background: #fff; }
+.bd-cat.empty { opacity: .7; }
+.bd-cat.over { border-color: #f1b0a8; }
+.bd-cat summary {
+  display: grid;
+  grid-template-columns: 34px minmax(120px, 1.2fr) 2fr auto;
+  align-items: center; gap: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  list-style: none;
+}
+.bd-cat summary::-webkit-details-marker { display: none; }
+.bd-ci { font-size: 1.4rem; text-align: center; }
+.bd-cn { font-weight: 700; font-size: .95rem; }
+.bd-cn small { display: block; font-size: .72rem; color: var(--muted); font-weight: 600; }
+.bd-cbar { position: relative; height: 10px; background: var(--bg); border-radius: 99px; }
+.bd-cbar > span { position: absolute; inset-block: 0; inset-inline-start: 0; background: var(--c); border-radius: 99px; min-width: 0; transition: width .5s; }
+.bd-cat.over .bd-cbar > span { background: #c0392b; }
+.bd-cbar .plan { position: absolute; top: -4px; bottom: -4px; width: 3px; background: var(--text); border-radius: 2px; transform: translateX(50%); }
+.bd-cv { text-align: end; line-height: 1.2; min-width: 70px; }
+.bd-cv b { font-size: 1.05rem; }
+.bd-cv small { display: block; font-size: .72rem; color: var(--muted); font-weight: 600; }
+.bd-cat.over .bd-cv small { color: #c0392b; }
+.bd-cat[open] summary { border-bottom: 1px dashed var(--border); }
+.bd-cat-body { padding: 10px 12px; }
+.bd-plan { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: .85rem; margin-bottom: 8px; }
+.bd-plan label { color: var(--muted); font-weight: 600; }
+.bd-plan input { width: 120px; font: inherit; padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; }
+.bd-plan .btn-sm { flex: none; padding: 5px 12px; }
+.bd-exp { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid var(--bg); font-size: .9rem; }
+.bd-exp .d { color: var(--muted); font-size: .78rem; font-weight: 700; min-width: 54px; }
+.bd-exp .s { flex: 1; min-width: 0; }
+.bd-exp .s small { display: block; color: var(--muted); font-size: .75rem; }
+.bd-exp .ap-btn { width: 26px; height: 26px; font-size: .75rem; }
+
+/* التقرير */
+.bd-burn {
+  display: flex; align-items: center; gap: 14px;
+  background: linear-gradient(135deg, #fff4e5, #fde8d7);
+  border: 1px solid #f6d3b0;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.bd-burn .fire { font-size: 2.2rem; }
+.bd-burn small { display: block; font-size: .78rem; color: #8a5a32; font-weight: 700; }
+.bd-burn b { display: block; font-size: 1.25rem; color: #b9531a; }
+.bd-burn span span { font-size: .88rem; color: #8a5a32; }
+.bd-alert { background: #fdecea; color: #a93226; border-radius: 10px; padding: 8px 12px; font-size: .88rem; font-weight: 600; margin: 8px 0 0; }
+.bd-h4 { font-size: .95rem; margin: 16px 0 6px; }
+.bd-rank { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--bg); font-size: .9rem; }
+.bd-rank .n {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  background: var(--cl); color: var(--c);
+  display: grid; place-items: center; font-weight: 800; font-size: .8rem;
+}
+.bd-rank .s { flex: 1; min-width: 0; font-weight: 600; }
+.bd-rank .s small { display: block; font-size: .72rem; color: var(--muted); }
+.bd-rank b.up { color: #c0392b; }
+.bd-rank b.down { color: #1e7a46; }
+
+@media (max-width: 560px) {
+  .bd-tiles { grid-template-columns: repeat(2, 1fr); }
+  .bd-cat summary { grid-template-columns: 30px 1fr auto; }
+  .bd-cbar { grid-column: 1 / -1; grid-row: 2; }
+}
+
+/* الطباعة: نطبع التقرير والشرائح بس */
+@media print {
+  .app-header, .sidebar, .backdrop, .back-btn, .bd-monthnav .ap-btn, #bdFormCard, #bdAllocForm, .toast, .celebrate, #bdPrint, .bd-plan, .bd-exp .ap-btn { display: none !important; }
+  body { padding: 0 !important; background: #fff; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+  .bd-cat { break-inside: avoid; }
+  details.bd-cat > .bd-cat-body { display: block; }
+}

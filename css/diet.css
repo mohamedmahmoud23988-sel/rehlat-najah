@@ -1,0 +1,80 @@
+/* الحمية الغذائية: الاختيارات + الممنوعات */
+
+/* كارت النهارده */
+.bn-today-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 2px dashed var(--border);
+  margin-bottom: 8px;
+  cursor: pointer;
+  position: relative;
+}
+.bn-today-row input { position: absolute; opacity: 0; pointer-events: none; }
+.bn-today-row .bc-box { width: 36px; height: 36px; font-size: 1.2rem; border-radius: 10px; }
+.bn-today-row .t { flex: 1; font-weight: 700; }
+.bn-today-row .t small { display: block; font-weight: 600; color: var(--muted); font-size: .78rem; }
+.bn-today-row:has(input:checked) { background: #e3f6ea; border-style: solid; border-color: #1e7a46; }
+.bn-today-row input:checked ~ .bc-box { background: #1e7a46; border-color: #1e7a46; color: #fff; }
+
+/* كارت كل ممنوع */
+.bn-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.bn-card.ended { background: #fafafa; }
+.bn-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.bn-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  font-size: 1.3rem;
+  background: #fdecea;
+}
+.bn-info { flex: 1; min-width: 0; }
+.bn-info b { display: block; font-size: 1.05rem; }
+.bn-info small { display: block; font-size: .8rem; color: var(--muted); }
+.bn-streak {
+  font-size: .8rem; font-weight: 800;
+  background: #fdf2e0; color: #9a5b00;
+  padding: 2px 10px; border-radius: 99px;
+  white-space: nowrap;
+}
+.bn-done-badge { font-size: .78rem; font-weight: 800; background: #e3f6ea; color: #1e7a46; padding: 2px 10px; border-radius: 99px; white-space: nowrap; }
+
+/* شبكة الأيام */
+.bn-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 6px; margin-bottom: 12px; }
+.bn-day {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 6px 2px;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 2px solid transparent;
+  cursor: pointer;
+  line-height: 1.15;
+  user-select: none;
+}
+.bn-day input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.bn-day .wd { font-size: .66rem; color: var(--muted); font-weight: 600; }
+.bn-day b { font-size: 1.05rem; }
+.bn-day .mk { font-size: .8rem; height: 1em; font-weight: 800; }
+
+.bn-day.done { background: #e3f6ea; border-color: #b9e4c9; }
+.bn-day.done .mk { color: #1e7a46; }
+.bn-day.today { border-color: var(--c); background: var(--cl); }
+.bn-day.missed { background: #fdecea; }
+.bn-day.missed .mk { color: #c0392b; }
+.bn-day.future { opacity: .45; cursor: not-allowed; }
+.bn-day.future input { cursor: not-allowed; }
+.bn-day input:focus-visible { outline: none; }
+.bn-day:has(input:focus-visible) { outline: 3px solid var(--cl); outline-offset: 2px; }
+
+.bn-bar { height: 8px; }
+.bn-foot { display: flex; justify-content: space-between; align-items: center; font-size: .82rem; color: var(--muted); margin-top: 6px; gap: 8px; flex-wrap: wrap; }
+.bn-foot strong { color: var(--text); }
+.bn-ended-msg { background: #e3f6ea; color: #1e7a46; font-weight: 700; font-size: .88rem; border-radius: 10px; padding: 8px 12px; margin-bottom: 10px; }
+.bn-ended-msg.meh { background: #fdf2e0; color: #9a5b00; }

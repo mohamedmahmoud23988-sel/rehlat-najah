@@ -1,0 +1,41 @@
+/* صفحة الصوم */
+
+/* ===== Fasting page ===== */
+.fs-next-big { font-size: 1.15rem; font-weight: 700; margin: 6px 0 4px; }
+.fs-next-big strong { color: var(--c); }
+.fs-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  background: var(--bg);
+  border: 2px solid transparent;
+}
+.fs-row:last-child { margin-bottom: 0; }
+.fs-day {
+  width: 46px; flex-shrink: 0;
+  text-align: center;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.fs-day b { display: block; font-size: 1.4rem; }
+.fs-day small { font-size: .7rem; color: var(--muted); font-weight: 600; }
+.fs-info { flex: 1; min-width: 0; }
+.fs-name { display: block; font-weight: 700; }
+.fs-date { display: block; font-size: .82rem; color: var(--muted); }
+.fs-tag { font-size: .75rem; font-weight: 700; padding: 2px 10px; border-radius: 99px; white-space: nowrap; }
+
+.fs-row.done { background: #e3f6ea; }
+.fs-row.done .fs-tag { background: #1e7a46; color: #fff; }
+.fs-row.today { background: var(--cl); border-color: var(--c); }
+.fs-row.today .fs-tag { background: var(--c); color: #fff; }
+.fs-row.upcoming { opacity: .7; }
+.fs-row.upcoming .fs-tag { background: var(--border); color: var(--muted); }
+.fs-row.upcoming.next { opacity: 1; border-color: var(--border); background: #fff; }
+.fs-row.missed { background: #f4f4f4; }
+.fs-row.missed .fs-name, .fs-row.missed .fs-day b { color: #9a9a9a; text-decoration: line-through; }
+.fs-row.missed .fs-tag { background: #fde8e6; color: #c0392b; }
+.fs-row .pr-check .bc-box { width: 32px; height: 32px; font-size: 1.1rem; }
+.fs-row.missed .bc-box, .fs-row.upcoming .bc-box { border-color: #cfd5d3; }
+
+

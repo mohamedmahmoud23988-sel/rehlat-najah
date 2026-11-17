@@ -126,3 +126,11 @@ body {
 .toast.show { transform: translate(-50%, 0); opacity: 1; }
 
 
+
+/* حقوق الملكية */
+.app-footer { text-align: center; padding: 26px 16px 34px; color: var(--muted); font-size: .82rem; line-height: 1.7; }
+.app-footer strong { color: var(--primary); }
+.app-footer-en { font-size: .72rem; opacity: .8; direction: ltr; }
+.auth-copy { margin-top: 6px; }
+.auth-copy strong { color: var(--primary); }
+@media print { .app-footer { display: block; } }

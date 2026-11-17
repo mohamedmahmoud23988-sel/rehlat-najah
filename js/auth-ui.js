@@ -74,6 +74,7 @@ if (!CURRENT_UID) {
       </form>
 
       <p class="auth-note">🔒 الباسورد بيتحفظ متشفّر على الجهاز ده.</p>
+      <p class="auth-note auth-copy">© <span class="copy-year">2026</span> <strong>Mohamed Mahmoud</strong> — رحلة نجاح. جميع الحقوق محفوظة.</p>
     </div>`;
   document.body.appendChild(gate);
   bindExtraFields("rg");
